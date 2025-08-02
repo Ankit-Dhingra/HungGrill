@@ -73,7 +73,7 @@ const Navbar = ({ setShowLogin }) => {
                 <>
                   <li
                     onClick={() =>
-                      window.open("http://localhost:5174/orders", "_blank")
+                      window.open("https://hunggrill-admin.onrender.com/orders", "_blank")
                     }
                   >
                     <img src={assets.AdminIcon} alt="" />
