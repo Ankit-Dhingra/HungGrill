@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import  { useContext, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
@@ -10,12 +11,29 @@ const LoginPopup = ({ setShowLogin }) => {
 
     const { setToken, url,loadCartData } = useContext(StoreContext)
     const [currState, setCurrState] = useState("Sign Up");
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         name: "",
-        email: "ankitdhingra1909@gmail.com",
-        password: "Ankit@2002"
+        email: "",
+        password: ""
     })
+
+    useEffect(() => {
+        if (currState === "Login") {
+            setData({
+                name: "",
+                email: "admin@gmail.com",
+                password: "Admin1234"
+            });
+        } else {
+            setData({
+                name: "",
+                email: "",
+                password: ""
+            });
+        }
+    }, [currState]);
 
     const onChangeHandler = (event) => {
         const name = event.target.name
@@ -39,6 +57,7 @@ const LoginPopup = ({ setShowLogin }) => {
             localStorage.setItem("token", response.data.token)
             loadCartData({token:response.data.token})
             setShowLogin(false)
+            navigate("/")
         }
         else {
             toast.error(response.data.message)

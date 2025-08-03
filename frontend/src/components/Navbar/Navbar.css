@@ -8,7 +8,8 @@
 
 .navbar .logo {
     height: auto;            
-    width: auto;            
+    width: auto;
+    margin-top: 6px;        
     max-height: 95px;       
     max-width: 160px;
     object-fit: contain;      
@@ -132,8 +133,9 @@ position: relative;
 
 @media (max-width:900px) {
      .navbar .logo {
-        max-height: 50px;
-        max-width: 100px;
+        margin-top: 7px;
+        max-height: 60px;
+        max-width: 90px;
     }
 
     .navbar-menu {
@@ -158,5 +160,10 @@ position: relative;
 @media (max-width:750px) {
     .navbar-menu {
         display: none;
+    }
+    .navbar .logo {
+        margin-top: 7px;
+        max-height: 50px;
+        max-width: 100px;
     }
 }
